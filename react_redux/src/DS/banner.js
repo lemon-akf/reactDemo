@@ -1,0 +1,21 @@
+export const banners =[{
+  id:1,
+  title:'001',
+  url:'http://www.baidu.com'
+},{
+  id:2,
+  title:'002',
+  url:'http://www.baidu.com'
+},{
+  id:3,
+  title:'003',
+  url:'http://www.baidu.com'
+},{
+  id:4,
+  title:'004',
+  url:'http://www.baidu.com'
+},{
+  id:5,
+  title:'005',
+  url:'http://www.baidu.com'
+}]

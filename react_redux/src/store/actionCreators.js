@@ -9,3 +9,8 @@ export const subActionNum = (num)=>({
   type: actionTypes.SUB_NUM,
   num
 })
+
+export const changeBanners = (banners)=>({
+  type:actionTypes.CHANGE_BANNERS,
+  banners
+})
