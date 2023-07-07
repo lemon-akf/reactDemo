@@ -1,3 +1,4 @@
+
 import * as actionTypes from "./constants"
 
 export const addActionNum = (num)=>({
@@ -8,9 +9,4 @@ export const addActionNum = (num)=>({
 export const subActionNum = (num)=>({
   type: actionTypes.SUB_NUM,
   num
-})
-
-export const changeBanners = (banners)=>({
-  type:actionTypes.CHANGE_BANNERS,
-  banners
 })

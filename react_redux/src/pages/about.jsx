@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 
 import { connect } from "react-redux"
-import { addActionNum, subActionNum } from '../store/actionCreators'
+import { addActionNum, subActionNum } from '../store/counter'
 export class about extends Component {
 
   calcNumber(num, isAdd) {
@@ -24,11 +24,11 @@ export class about extends Component {
           <button onClick={(e) => this.calcNumber(7, false)}>-7</button>
         </div>
         <div>
-          <ul>
+          {/* <ul>
             {banners.map((item, index) => {
               return <li key={index}>{item.title}</li>
             })}
-          </ul>
+          </ul> */}
         </div>
       </div>
     )
@@ -36,8 +36,8 @@ export class about extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  counter: state.counter,
-  banners: state.banners
+  counter: state.counter.counter,
+  // banners: state.home.banners,
 })
 
 const mapDispatchToProps = (dispatch, ownProps) => {

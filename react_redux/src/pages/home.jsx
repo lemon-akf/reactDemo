@@ -1,14 +1,14 @@
 import React, { PureComponent } from 'react'
 
 import store from '../store'
-import { addActionNum } from '../store/actionCreators'
+import { addActionNum } from '../store/counter'
 
 
 export class home extends PureComponent {
   constructor(){
     super()
     this.state = {
-      counter: store.getState().counter
+      counter: store.getState().counter.counter
     }
   }
 
@@ -16,7 +16,7 @@ export class home extends PureComponent {
     store.subscribe(()=>{
       const state =  store.getState()
       this.setState({
-        counter: state.counter
+        counter: state.counter.counter
       })
     })
   }
@@ -27,7 +27,7 @@ export class home extends PureComponent {
 
     const { counter } = this.state
     return (
-      <div>home
+      <div>home page
         <h1>当前计数：{counter}</h1>
         <button onClick={ e =>this.addChangeNum(1) }>+1</button>
         <button onClick={ e =>this.addChangeNum(5) }>+5</button>

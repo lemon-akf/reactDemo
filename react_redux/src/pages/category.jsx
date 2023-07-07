@@ -1,27 +1,23 @@
 import React, { PureComponent } from 'react'
-import axios from "axios"
 import { banners } from '../DS/banner'
 import { connect } from 'react-redux'
-import { changeBanners } from '../store/actionCreators'
+import { fetchHomeMultidataAction } from '../store/home'
 
 export class Category extends PureComponent {
 
   componentDidMount() {
-    
-    console.log('banner', banners)
-    setTimeout(()=>{
-      this.props.changeBanners(banners)
-    },1000)
+
+    this.props.fetchHomeMultidata()
 
   }
 
   render() {
-    const counter =  this.props.counter
+    const counter = this.props.counter
     return (
       <div>
         <h2>当前计数：{counter}</h2>
         <ul >
-          {banners.map((item,index)=>{
+          {banners.map((item, index) => {
             return <li key={index}>{item.title}</li>
           })}
         </ul>
@@ -30,15 +26,14 @@ export class Category extends PureComponent {
   }
 }
 
-
 const mapStateToProps = (state) => ({
-  counter: state.counter
+  counter: state.counter.counter
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  changeBanners(banners) {
-    dispatch(changeBanners(banners))
-  },
+  fetchHomeMultidata() {
+    dispatch(fetchHomeMultidataAction())
+  }
 })
 
-export default connect(mapStateToProps,mapDispatchToProps)(Category)
+export default connect(mapStateToProps, mapDispatchToProps)(Category)

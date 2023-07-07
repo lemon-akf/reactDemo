@@ -2,13 +2,13 @@
 import React, { PureComponent } from 'react'
 
 import store from '../store'
-import { subActionNum } from '../store/actionCreators'
+import { subActionNum } from '../store/counter'
 
 export class profile extends PureComponent {
   constructor(){
     super()
     this.state = {
-      counter: store.getState().counter
+      counter: store.getState().counter.counter
     }
   }
 
@@ -16,7 +16,7 @@ export class profile extends PureComponent {
     store.subscribe(()=>{
       const state =  store.getState()
       this.setState({
-        counter: state.counter
+        counter: state.counter.counter
       })
     })
   }
