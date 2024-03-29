@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>css动画实现滚动通知栏</title>
+</head>
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+  }
+  .wrapper{
+    display: flex;
+    padding: 0px 30px;
+  }
+
+  .scroll-container {
+    box-sizing: border-box;
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    border: 1px solid red;
+    width: 500px;
+    height: 30px;
+    line-height: 30px;
+    padding-left: 10px;
+  }
+  
+  .scroll-content {
+    font-size: 0;
+    display: inline-block;
+    animation: scroll-left 10s 1s linear infinite;
+  }
+  .scroll-content:hover{
+    animation-play-state:paused;
+  }
+
+  .text-item{
+    box-sizing: border-box;
+    display: inline-block;
+    overflow: hidden;
+    /* border: 1px solid black; */
+    font-size: 14px;
+    height: 20px;
+    line-height: 20px;
+    margin-top: 5px;
+    padding-right: 30px;
+  }
+  a {
+    color: black;
+  }
+  a:hover{
+    color: blue;
+  }
+
+  .one{
+    width: 500px;
+  }
+
+  @keyframes scroll-left {
+    from {
+      transform: translateX(0%);
+    }
+
+    to {
+      transform: translateX(calc(-100% + 500px));
+    }
+  }
+
+  .icon-img{
+    width: 25px;
+  }
+
+  img {
+    width: 20px;
+    height: 20px;
+    margin-top: 5px;
+  }
+</style>
+
+<body>
+
+  <div style="height: 200px;"></div>
+  <div class="wrapper">
+    <div class="icon-img">
+      <img src="https://i-1-lanrentuku.52tup.com/2020/12/29/10d7f43c-6f35-4123-aed1-99b00779f0f9.jpg?imageView2/2/w/500" alt="">
+    </div>
+    <div class="scroll-container">
+    
+      <div class="scroll-content">
+        <!-- 内容可以是文字或者其他元素 -->
+        <div class="text-item one"><a href="">通知一：关于做好春节前后雨雪春节前后雨雪灾害防范应对工作的通知!!!</a></div>
+        <div class="text-item"><a href="">通知二：好好睡觉是成年人的顶级自律!!</a></div>
+        <div class="text-item"><a href="">通知三：这个月，OpenAI 终于坐不住了。!!!</a></div>
+        <div class="text-item"><a href="">通知四：蚂蚁集团技术专家邀你齐聚全球机器学习技术大会!!!</a></div>
+        <div class="text-item one"><a href="">通知一：关于做好春节前后雨雪春节前后雨雪灾害防范应对工作的通知!!!</a></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+
+  </script>
+</body>
+
+</html>

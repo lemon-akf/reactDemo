@@ -1,40 +1,48 @@
 import React, { PureComponent } from 'react'
 
-import store from '../store'
-import { addActionNum } from '../store/counter'
+import { addNumber} from '../store/features/counter'
+import { getBannerData } from '../store/features/home'
+import { connect } from 'react-redux'
 
+export class Home extends PureComponent {
 
-export class home extends PureComponent {
-  constructor(){
-    super()
-    this.state = {
-      counter: store.getState().counter.counter
-    }
+  componentDidMount() {
+    this.props.getBannerData()
   }
+  
 
-  componentDidMount(){
-    store.subscribe(()=>{
-      const state =  store.getState()
-      this.setState({
-        counter: state.counter.counter
-      })
-    })
-  }
-  addChangeNum(num){
-    store.dispatch(addActionNum(num))
-  }
   render() {
 
-    const { counter } = this.state
+    const { counter,banner } = this.props
     return (
       <div>home page
         <h1>当前计数：{counter}</h1>
-        <button onClick={ e =>this.addChangeNum(1) }>+1</button>
-        <button onClick={ e =>this.addChangeNum(5) }>+5</button>
-        <button onClick={ e =>this.addChangeNum(10) }>+10</button>
+        <button onClick={e => this.props.addNumber(1)}>+1</button>
+        <button onClick={e => this.props.addNumber(5)}>+5</button>
+        <button onClick={e => this.props.addNumber(10)}>+10</button>
+        <ul >
+          {banner.map((item, index) => {
+            return <li key={index}>
+              {item.title}
+            </li>
+          })}
+        </ul>
       </div>
     )
   }
 }
 
-export default home
+
+const mapStateToProps = (state) => ({
+  counter: state.counter.counter,
+  banner: state.home.banner
+})
+
+const mapDispatchToProps = (dispatch) => ({
+  addNumber: (num) => { dispatch(addNumber(num)) },
+  getBannerData: () => { dispatch(getBannerData()) }
+
+
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

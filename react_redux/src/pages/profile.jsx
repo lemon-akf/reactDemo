@@ -1,41 +1,38 @@
 
 import React, { PureComponent } from 'react'
+import { connect } from 'react-redux'
 
-import store from '../store'
-import { subActionNum } from '../store/counter'
+import { subNumber } from '../store/features/counter'
 
-export class profile extends PureComponent {
-  constructor(){
-    super()
-    this.state = {
-      counter: store.getState().counter.counter
-    }
+export class Profile extends PureComponent {
+
+  // 当组件挂载到DOM中后会被调用
+  componentDidMount() {
   }
 
-  componentDidMount(){
-    store.subscribe(()=>{
-      const state =  store.getState()
-      this.setState({
-        counter: state.counter.counter
-      })
-    })
-  }
-  subChangeNum(num){
-    store.dispatch(subActionNum(num))
-  }
   render() {
 
-    const { counter } = this.state
+    const { counter } = this.props
     return (
       <div>
         profile
         <h1>当前计数：{counter}</h1>
-        <button onClick={(e)=> this.subChangeNum(1)} >-1</button>
-        <button onClick={(e)=> this.subChangeNum(5)} >-5</button>
-        <button onClick={(e)=> this.subChangeNum(10)} >-10</button>
+        <button onClick={(e) => this.props.subNumber(1)} >-1</button>
+        <button onClick={(e) => this.props.subNumber(5)} >-5</button>
+        <button onClick={(e) => this.props.subNumber(10)} >-10</button>
       </div>
     )
   }
 }
 
-export default profile
+const mapStateToProps = (state) => ({
+  counter: state.counter.counter
+})
+
+const mapDispatchToProps = (dispatch) => ({
+
+  subNumber: (num) => { dispatch(subNumber(num)) }
+
+})
+
+export default connect(mapStateToProps,mapDispatchToProps)(Profile)

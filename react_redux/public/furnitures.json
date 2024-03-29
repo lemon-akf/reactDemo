@@ -1,0 +1,60 @@
+{
+  "furniture":[
+     {
+      "id": 1,
+      "name": "床",
+      "details": "xxxxx",
+      "size": "2m*2m",
+      "counts": 10
+    },
+     {
+      "id": 2,
+      "name": "椅子",
+      "details": "xxxxx",
+      "size": "1m*1m",
+      "counts": 5
+    },
+     {
+      "id": 3,
+      "name": "沙发",
+      "details": "xxxxx",
+      "size": "3m*3m",
+      "counts": 20
+    },
+     {
+      "id": 4,
+      "name": "衣柜",
+      "details": "xxxxx",
+      "size": "1m*1m",
+      "counts": 10
+    },
+     {
+      "id": 5,
+      "name": "餐桌",
+      "details": "xxxxx",
+      "size": "1m*1m",
+      "counts": 5
+    },
+     {
+      "id": 6,
+      "name": "餐桌",
+      "details": "xxxxx",
+      "size": "1m*1m",
+      "counts": 5
+    },
+     {
+      "id": 7,
+      "name": "餐椅",
+      "details": "xxxxx",
+      "size": "1m*1m",
+      "counts": 5
+    },
+     {
+      "id": 8,
+      "name": "餐车",
+      "details": "xxxxx",
+      "size": "1m*1m",
+      "counts": 5
+    }
+  ]
+}

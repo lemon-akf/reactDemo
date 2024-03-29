@@ -5,6 +5,7 @@ import Home from './pages/home'
 import Profile from './pages/profile'
 import About from './pages/about'
 import Category from './pages/category'
+import { connect } from "react-redux"
 
 export class App extends PureComponent {
   constructor() {
@@ -12,7 +13,6 @@ export class App extends PureComponent {
     this.state = {
       counter: store.getState().counter.counter
     }
-    
   }
   componentDidMount() {
     store.subscribe(() => {
@@ -24,7 +24,7 @@ export class App extends PureComponent {
   }
   render() {
 
-    const { counter } = this.state
+    const { counter } = this.props
     return (
       <div>
         <h1>APP page</h1>
@@ -40,5 +40,8 @@ export class App extends PureComponent {
   }
 }
 
+const mapStateToProps=(state) => ({
+  counter:state.counter.counter
+})
 
-export default App
+export default connect(mapStateToProps)(App)

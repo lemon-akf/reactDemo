@@ -1,9 +1,7 @@
 import React, { Component } from 'react'
 
 import { connect } from "react-redux"
-import { addNumber, subNumber } from "../store/features/counter"
-import { changeBanner } from "../store/features/home"
-
+import { addActionNum, subActionNum } from '../store/counter'
 export class about extends Component {
 
   calcNumber(num, isAdd) {
@@ -14,12 +12,8 @@ export class about extends Component {
     }
   }
 
-  componentDidMount() {
-    this.props.getBanners()
-  }
-
   render() {
-    const { counter, banner } = this.props
+    const { counter, banners } = this.props
     return (
       <div>
         <h2>About Page: {counter}</h2>
@@ -30,37 +24,32 @@ export class about extends Component {
           <button onClick={(e) => this.calcNumber(7, false)}>-7</button>
         </div>
         <div>
-          <h2>轮播图:</h2>
-          <ul>
-            {banner.map((item, index) => {
+          {/* <ul>
+            {banners.map((item, index) => {
               return <li key={index}>{item.title}</li>
             })}
-          </ul>
+          </ul> */}
         </div>
       </div>
     )
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state) => ({
+  counter: state.counter.counter,
+  // banners: state.home.banners,
+})
+
+const mapDispatchToProps = (dispatch, ownProps) => {
   return {
-    counter: state.counter.counter,
-    banner: []
+    addNumber: (num) => {
+      dispatch(addActionNum(num))
+    },
+    subNumber: (num) => {
+      dispatch(subActionNum(num))
+    }
   }
 }
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-  addNumber: (num) => {
-    dispatch(addNumber(num))
-  },
-  subNumber: (num) => {
-    dispatch(subNumber(num))
-  },
-  getBanners: () => {
-    dispatch(changeBanner())
-  }
-})
 
-// connect() 返回值是一个高阶组件。 
-// 把 store 里的state 以及 Dispatch 映射到 当前组件的 props 里，通过 this.props 即可拿到
 export default connect(mapStateToProps, mapDispatchToProps)(about)

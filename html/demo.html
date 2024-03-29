@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<style>
+  .notice {
+    display: flex;
+    justify-content: center;
+    border: 1px solid red;
+  }
+
+  .notice_icon {
+    margin-right: 10px;
+    border: 1px solid blue;
+  }
+
+  .notice_scroll {
+    width: 500px;
+    overflow: hidden;
+    white-space: nowrap;
+    border: 1px solid pink;
+  }
+
+  .notice_text {
+    animation: marquee 30s linear infinite;
+  }
+
+  span {
+    margin-right: 20px;
+  }
+
+  @keyframes marquee {
+    0% {
+      transform: translateX(5%);
+    }
+
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+</style>
+
+<body>
+
+  <div class="notice">
+    <div class="notice_icon">📢</div>
+    <div class="notice_scroll">
+      <div class="notice_text">
+        <span>
+          23423423423423423423423
+        </span>
+        <span>
+          23423423423423423423423423
+        </span>
+      </div>
+    </div>
+  </div>
+</body>
+
+<script>
+  console.log('',);
+</script>
+</html>
